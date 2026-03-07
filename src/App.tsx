@@ -384,8 +384,8 @@ function HomePage() {
           <div className="relative order-1 md:order-2">
             <div className="aspect-[4/5] md:aspect-auto overflow-hidden rounded-2xl">
               <img 
-                src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69a0b8d2e545dde79cf25ca6.jpg" 
-                alt="Fresh Döner" 
+                src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68ef4ae3fdc756d5056eee39.jpeg" 
+                alt="Alpina Urban Food" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
