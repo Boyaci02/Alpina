@@ -33,7 +33,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const orderUrl = "https://qopla.com/restaurant/alpina-urban/qYxa7mbmVk/order";
+const orderUrl = "https://qopla.com/restaurant/alpina-urban/qgdpg7rV0K/order";
 
 const socialLinks = [
   { 
