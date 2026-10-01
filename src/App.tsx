@@ -10,13 +10,21 @@ import {
   Instagram, 
   Menu, 
   X, 
-  MapPin, 
-  Clock, 
-  Mail, 
+  MapPin,
+  Clock,
+  Mail,
+  Phone,
   ExternalLink,
   ChevronRight,
   ChevronDown
 } from 'lucide-react';
+
+// Kontaktuppgifterna står på flera ställen: sidfoten, adresskortet och
+// kontaktbannern. De ligger här så att en ändring slår igenom överallt och
+// inget ställe kan bli kvar med det gamla (Oliver på Qopla 1/10 2026).
+const MEJL = 'info@alpinaurban.se';
+const TELEFON = '054-8206020';
+const TELEFON_LANK = 'tel:+46548206020';
 
 // ... (TikTokIcon remains the same)
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -227,8 +235,13 @@ function Footer() {
           <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal mb-6">Kontakt</h4>
           <ul className="space-y-4">
             <li>
-              <a href="mailto:malik.kirbas@gmail.com" className="text-gray-600 hover:text-black transition-colors flex items-center gap-2">
-                <Mail size={16} /> malik.kirbas@gmail.com
+              <a href={`mailto:${MEJL}`} className="text-gray-600 hover:text-black transition-colors flex items-center gap-2">
+                <Mail size={16} /> {MEJL}
+              </a>
+            </li>
+            <li>
+              <a href={TELEFON_LANK} className="text-gray-600 hover:text-black transition-colors flex items-center gap-2">
+                <Phone size={16} /> {TELEFON}
               </a>
             </li>
             <li className="text-gray-600 flex items-start gap-2">
@@ -413,8 +426,14 @@ function HomePage() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold uppercase tracking-widest mb-4 md:mb-6 text-brand-teal">Karlstad</h3>
               <p className="text-xl md:text-2xl font-black mb-1 md:mb-2">Östra torggatan 15</p>
-              <p className="text-gray-400 mb-6 md:mb-8 text-sm md:text-base">652 24 Karlstad, Sverige</p>
-              <a 
+              <p className="text-gray-400 mb-4 md:mb-6 text-sm md:text-base">652 24 Karlstad, Sverige</p>
+              <a
+                href={TELEFON_LANK}
+                className="flex w-fit items-center gap-2 text-base md:text-lg font-black mb-6 md:mb-8 hover:text-brand-teal transition-colors"
+              >
+                <Phone size={16} /> {TELEFON}
+              </a>
+              <a
                 href="https://maps.app.goo.gl/zTV7gZ7KT6SPsqqr7"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -437,11 +456,11 @@ function HomePage() {
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Fredag</span>
-                  <span className="text-base md:text-lg font-black">11:00 – 22:00</span>
+                  <span className="text-base md:text-lg font-black">11:00 – 23:00</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Lördag</span>
-                  <span className="text-base md:text-lg font-black">12:00 – 22:00</span>
+                  <span className="text-base md:text-lg font-black">12:00 – 23:00</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Söndag</span>
@@ -462,11 +481,12 @@ function HomePage() {
               </div>
               <div>
                 <p className="text-xs md:text-sm uppercase font-bold opacity-80">Frågor eller funderingar?</p>
-                <p className="text-lg md:text-xl font-black tracking-tight">malik.kirbas@gmail.com</p>
+                <p className="text-lg md:text-xl font-black tracking-tight">{MEJL}</p>
+                <a href={TELEFON_LANK} className="text-lg md:text-xl font-black tracking-tight hover:underline">{TELEFON}</a>
               </div>
             </div>
             <a 
-              href="mailto:malik.kirbas@gmail.com"
+              href={`mailto:${MEJL}`}
               className="w-full md:w-auto bg-white text-brand-red px-8 py-3 rounded-full font-bold uppercase text-sm tracking-widest hover:scale-105 transition-transform text-center"
             >
               Kontakta Oss
