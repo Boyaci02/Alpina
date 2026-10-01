@@ -511,134 +511,180 @@ function MenuPage() {
     );
   };
 
-  const menuCategories = [
+  // Menyn enligt kundens egen PDF "Men med priser till kassan", via Oliver på
+  // Qopla 1/10 2026. Rätter, priser och beskrivningar är tagna rakt ur den.
+  // Rättade stavfel i beskrivningarna: champoinjoner, jalapños och
+  // hackadfefferoni, alla tre stavade rätt på andra ställen i samma PDF.
+  //
+  // note      står under kategorirubriken, gäller hela kategorin
+  // tillagg   prisrutan längst ned i kategorin, motsvarar PDF:ens ramade rutor
+  const menuCategories: {
+    title: string;
+    note?: string;
+    tillagg?: string;
+    items: { name: string; description: string; price: string }[];
+  }[] = [
     {
-      title: "Pizza Klass 1",
+      title: "Pizza",
+      tillagg: "Bearnaisesås, chillimajo, chipotlesås, kebabsås, stark sås och vitlökssås 15 kr. Extra topping, kött, fågel och skaldjur 25 kr. Glutenfri botten 30 kr. Pommes på pizza 30 kr. Alla pizzor går att få i barnstorlek, då avdrages 20 kr från ordinarie pris.",
       items: [
-        { name: "Margherita", description: "Tomatsås och ost.", price: "Från 115 kr" },
-        { name: "Vesuvio", description: "Tomatsås, ost och skinka.", price: "Från 115 kr" },
-        { name: "Marmara", description: "Tomatsås, ost och Salami.", price: "Från 115 kr" },
-        { name: "Al Funghi", description: "Tomatsås, ost och Färska champinjoner.", price: "Från 115 kr" },
-        { name: "Hawaii", description: "Tomatsås, ost, skinka och ananas.", price: "Från 115 kr" },
-        { name: "Capricciosa", description: "Tomatsås, ost, skinka och champinjoner.", price: "Från 115 kr" },
-        { name: "Hazal", description: "Tomatsås, ost, salami och lök.", price: "Från 115 kr" },
-        { name: "Bussola", description: "Tomatsås, ost, skinka och räkor.", price: "Från 115 kr" },
-        { name: "Bolognese", description: "Tomatsås, ost, köttfärssås och lök.", price: "Från 115 kr" },
-        { name: "FBK", description: "Tomatsås, ost skinka och köttfärs.", price: "Från 115 kr" },
-        { name: "Calzone", description: "Inbakad pizza med tomatsås, ost och skinka.", price: "Från 115 kr" },
-        { name: "Banana", description: "Tomatsås, ost, skinka, banan och curry.", price: "Från 115 kr" },
-      ]
-    },
-    {
-      title: "Pizza Klass 2",
-      items: [
-        { name: "Norrland", description: "Tomatsås, ost, köttfärs, räkor och gorgonzola.", price: "Från 129 kr" },
-        { name: "Quattro Stagioni", description: "Tomatsås, ost, skinka, färska champinjoner, räkor, musslor, oliver och kronärtskocka.", price: "Från 129 kr" },
-        { name: "Mesopotamia", description: "Tomatsås, ost, salami, köttfärs, lök och kryddmix.", price: "Från 129 kr" },
-        { name: "Hagaborg", description: "Tomatsås, ost, skinka, räkor och färska champinjoner.", price: "Från 129 kr" },
-        { name: "Oriental - Stark", description: "Tomatsås, ost, köttfärs, lök, färsk paprika och färska champinjoner.", price: "Från 129 kr" },
-        { name: "Rud", description: "Tomatsås, ost, salami, lök och färska champinjoner.", price: "Från 129 kr" },
-        { name: "Agaton", description: "Tomatsås, ost, skinka, jordnötter, ananas, banan och curry.", price: "Från 129 kr" },
-        { name: "Kvarnberget", description: "Tomatsås, ost, köttfärs, salami, bacon, oliver och lök.", price: "Från 129 kr" },
-        { name: "Gorgonzola", description: "Tomatsås, ost, färska champinjoner, paprika och gorgonzola.", price: "Från 129 kr" },
-        { name: "Värmland", description: "Tomatsås, ost, kyckling, jordnötter, banan och curry.", price: "Från 129 kr" },
-        { name: "91:an", description: "Tomatsås, ost, färska champinjoner, köttfärs, lök, färska tomater och peperoni.", price: "Från 129 kr" },
-        { name: "Il Vegetariano", description: "Tomatsås, ost, färska champinjoner, sparris, färsk paprika, oliver, kronärtskocka och lök.", price: "Från 129 kr" },
-        { name: "Lios", description: "Tomatsås, ost, aubergine, soltorkade tomater, lök och färska champinjoner.", price: "Från 129 kr" },
-      ]
-    },
-    {
-      title: "Pizza Klass 3",
-      items: [
-        { name: "Selma", description: "Halvinbakad pizza med tomatsås, ost, oxfilé, färska champinjoner, paprika, lök och bearnaisesås.", price: "Från 139 kr" },
-        { name: "Karlstads - Stark", description: "Tomatsås, ost, kyckling, köttfärs, peperoni och specialsalami.", price: "Från 139 kr" },
-        { name: "Gourmet", description: "Tomatsås, ost, fläskfilé, sparris, paprika, färska champinjoner och bearnaisesås.", price: "Från 139 kr" },
-        { name: "Azteka", description: "Tomatsås, ost, skinka, tacokryddmix, tacosås och jalapeño.", price: "Från 139 kr" },
-        { name: "Acapulco", description: "Tomatsås, ost, oxfilé, tacokryddmix, färska champinjoner, lök, tacosås och jalapeño.", price: "Från 139 kr" },
-        { name: "A&M - Stark", description: "Tomatsås, ost, fläskfilé, oxfilé, peperoni, färska tomater och vitlökssås.", price: "Från 139 kr" },
-        { name: "Mamma Mia", description: "Tomatsås, ost, fläskfilé, oxfilé, lök, peperoni, färska tomater and bearnaisesås.", price: "Från 139 kr" },
-        { name: "Jasmin", description: "Inbakad pizza med tomatsås, ost, oxfilé, färska tomater och gorgonzola.", price: "Från 139 kr" },
-        { name: "Bella Maria", description: "Tomatsås, ost, oxfilé, räkor, lök, jalapeño och bearnaisesås.", price: "Från 139 kr" },
-        { name: "Kyckling Feta", description: "Tomatsås, ost, kyckling, salladsost, tomat och oliver.", price: "Från 139 kr" },
-        { name: "Amigo", description: "Tomatsås, ost, köttfärs, tacokryddmix, lök, vitlök, tacosås och jalapeño.", price: "Från 139 kr" },
-        { name: "Bella Italia", description: "Tomatsås, ost, oxfilé, lufttorkad skinka, färska champinjoner, färsk vitlök och persilja.", price: "Från 139 kr" },
-        { name: "Venedig", description: "Tomatsås, ost, oxfilé, kantareller, färska tomater, lök och bearnaisesås.", price: "Från 139 kr" },
+        { name: "Margarita", description: "Tomatsås, ost", price: "125 kr" },
+        { name: "Pepperoni", description: "Tomatsås, ost, pepperonikorv", price: "125 kr" },
+        { name: "Levent", description: "Tomatsås, ost, salami", price: "130 kr" },
+        { name: "Bolognese", description: "Tomatsås, ost, köttfärssås, lök", price: "135 kr" },
+        { name: "Kycklingpizza", description: "Tomatsås, ost, kyckling", price: "135 kr" },
+        { name: "Diavola", description: "Tomatsås, ost, salami, lök", price: "135 kr" },
+        { name: "Vesuvio", description: "Tomatsås, ost, skinka", price: "135 kr" },
+        { name: "Calzone (inbakad)", description: "Tomatsås, ost, skinka", price: "135 kr" },
+        { name: "Al Tonno", description: "Tomatsås, ost, tonfisk", price: "135 kr" },
+        { name: "Capricciosa", description: "Tomatsås, ost, skinka, färska champinjoner", price: "140 kr" },
+        { name: "Hawaii", description: "Tomatsås, ost, skinka, ananas", price: "140 kr" },
+        { name: "Bussola", description: "Tomatsås, ost, skinka, räkor", price: "140 kr" },
+        { name: "Al Fungi", description: "Tomatsås, ost, färska champinjoner", price: "140 kr" },
+        { name: "Quattro Stagioni", description: "Tomatsås, ost, räkor, musslor, färska champinjoner, skinka, kronärtskocka, kalamataoliver", price: "145 kr" },
+        { name: "Siciliana", description: "Tomatsås, ost, sardeller, kapris, salami, kalamataoliver, vitlök", price: "145 kr" },
+        { name: "Värmland", description: "Tomatsås, ost, kyckling, banan, curry, jordnötter", price: "145 kr" },
+        { name: "Leilo", description: "Tomatsås, ost, räkor, färska champinjoner", price: "145 kr" },
+        { name: "Bembay", description: "Tomatsås, ost, skinka, räkor, ananas", price: "145 kr" },
+        { name: "Ayasofya", description: "Tomatsås, ost, köttfärs, lök, salami, stark krydda", price: "145 kr" },
+        { name: "Contadina", description: "Tomatsås, ost, bacon, lök, salami, vitlök", price: "145 kr" },
+        { name: "Triton", description: "Tomatsås, ost, skinka, räkor, färska champinjoner", price: "145 kr" },
+        { name: "Tropicana", description: "Tomatsås, ost, skinka, ananas, banan, curry", price: "145 kr" },
       ]
     },
     {
       title: "Kebabpizza",
+      note: "Välj mellan nöt, fläsk och kyckling.",
       items: [
-        { name: "Kebabpizza", description: "Tomatsås, ost, kebabkött, lök, tomat, peperoni och valfri sås.", price: "Från 129 kr" },
-        { name: "Hensta", description: "Tomatsås, ost, kebabkött, lök, peperoni, färska tomater, isbergssallad och valfri sås.", price: "Från 139 kr" },
-        { name: "Bellevue", description: "Tomatsås, ost, kebabkött, lök, peperoni, färska tomater, pommes frites och valfri sås.", price: "Från 139 kr" },
-        { name: "Favoriten", description: "Tomatsås, ost, kebabkött, lök, ananas, färska champinjoner, peperoni och valfri sås.", price: "Från 139 kr" },
-        { name: "Nachoskebab", description: "Tomatsås, ost, nachochips, kebabkött, lök, tomat, peperoni och valfri sås.", price: "Från 139 kr" },
+        { name: "Kebabpizza", description: "Tomatsås, ost, kebab, lök, hackad fefferoni, valfri sås", price: "155 kr" },
+        { name: "Ares", description: "Tomatsås, ost, kebab, lök, isbergssallad, gurka, tomat, valfri sås", price: "160 kr" },
+        { name: "Loki (halvinbakad)", description: "Tomatsås, ost, kebab, lök, grillad paprika, färska champinjoner, valfri sås", price: "160 kr" },
+        { name: "Bakis", description: "Tomatsås, ost, kebab, lök, skinka, pommes, valfri sås", price: "165 kr" },
       ]
     },
     {
-      title: "Vegan Pizza",
+      title: "Alpinapizza",
       items: [
-        { name: "Vesuvio - Vegan", description: "Tomatsås, vegansk ost och vegansk skinka.", price: "Från 139 kr" },
-        { name: "Kebabpizza - Vegan", description: "Tomatsås, vegansk ost, veganskt kebabkött, lök, färska tomater, peperoni och valfri sås.", price: "Från 139 kr" },
-        { name: "Vegan Special", description: "Tomatsås, vegansk ost, rostad zucchini, rostad aubergine, soltorkade tomater, rödlök och ruccolasallad.", price: "Från 139 kr" },
+        { name: "Alicante", description: "Tomatsås, ost, pepperonikorv, jalapeños, färska champinjoner, lök, körsbärstomater", price: "165 kr" },
+        { name: "Paris", description: "Tomatsås, ost, biff, kantareller, körsbärstomater, lök, bearnaisesås", price: "165 kr" },
+        { name: "Venedig (halvinbakad)", description: "Tomatsås, ost, biff, färska champinjoner, lök, grillad paprika, bearnaisesås", price: "165 kr" },
+        { name: "Oktavio", description: "Tomatsås, ost, biff, lök, färska champinjoner, jalapeños", price: "165 kr" },
+        { name: "Izmir", description: "Tomatsås, ost, köttfärs, lök, färska champinjoner, grillad paprika", price: "165 kr" },
+        { name: "Del Mar", description: "Tomatsås, ost, musslor, räkor, tonfisk, vitlök, persilja, citron", price: "165 kr" },
+        { name: "Roma", description: "Tomatsås, ost, italiensk salami, grillad paprika, vitlök, ruccola, grana padano", price: "165 kr" },
+        { name: "Kosmopol", description: "Tomatsås, ost, ryggbiff, körsbärstomater, lök, grillad paprika, ruccola och bearnaisesås", price: "165 kr" },
+        { name: "Caesarpizza", description: "Tomatsås, ost, kyckling, bacon, caesarsallad, grana padano, basilikapesto", price: "165 kr" },
+        { name: "Pavo", description: "Tomatsås, ost, kyckling, grillad paprika, lök, vitost", price: "165 kr" },
+        { name: "Azteka", description: "Tomatsås, ost, skinka, jalapeños, lök, tacokrydda, tacosås, crème fraiche", price: "165 kr" },
+        { name: "Trufa", description: "Tomatsås, ost, biff, färska champinjoner, tryffelkräm, ruccola", price: "165 kr" },
+        { name: "Mexicana", description: "Tomatsås, ost, köttfärssås, lök, hackad fefferoni, grillad paprika, stark krydda", price: "165 kr" },
+        { name: "La Paz", description: "Tomatsås, ost, köttfärssås, jalapeños, stark krydda, lök", price: "165 kr" },
+        { name: "Machio", description: "Pizza blanco, ost, körsbärstomater, kalamataoliver, fetaost, pistage", price: "165 kr" },
+        { name: "Cleopatra", description: "Pizza blanco, ost, färska champinjoner, vitlök, kronärtskocka, ruccola", price: "165 kr" },
+        { name: "Vegetariana", description: "Tomatsås, ost, färska champinjoner, grillad paprika, kalamataoliver, kronärtskocka, sparris, lök", price: "165 kr" },
+        { name: "Parma", description: "Tomatsås, ost, lufttorkad skinka, grana padano, ruccola", price: "165 kr" },
+        { name: "Kejsaren", description: "Tomatsås, ost, biff, soltorkade tomater, ruccola, hyvlad grana padano, bearnaisesås", price: "165 kr" },
       ]
     },
     {
-      title: "Kebabrätter",
+      title: "Burgare",
+      note: "Samtliga hamburgare är 100% högrev och serveras med briochebröd och pommes.",
+      tillagg: "Extra kött (120 g) 30 kr. Bearnaisesås, chillimajo, chipotlesås, vitlökssås och aioli 15 kr.",
       items: [
-        { name: "Kebabtallrik", description: "Serveras med pommes frites, sallad och valfri sås. Välj mellan fläsk, nöt eller kyckling.", price: "Från 129 kr" },
-        { name: "Kebabrulle", description: "Serveras i hembakat tunnbröd med sallad och valfri sås. Välj mellan fläsk, nöt eller kyckling.", price: "Från 129 kr" },
-        { name: "Kebab i Pita", description: "Klassiskt pitabröd fyllt med kött, grönsaker och sås. Välj mellan fläsk, nöt eller kyckling.", price: "Från 129 kr" },
-        { name: "Alexanderkebab", description: "Kebabkött som serveras på skuret bröd tillsammans med sallad och tomatsås. Välj mellan fläsk, nöt eller kyckling.", price: "Från 129 kr" },
-        { name: "Falafeltallrik", description: "Serveras med pommes frites, sallad och sås.", price: "Från 129 kr" },
-        { name: "Falafelrulle", description: "Serveras i ett nybakat tunnbröd med sallad och sås.", price: "Från 129 kr" },
+        { name: "Cheeseburger", description: "Dubbel cheddarost, sallad, lök, tomat, dressing", price: "150 kr" },
+        { name: "Cheese & Bacon", description: "Dubbel cheddarost, bacon, sallad, lök, tomat, dressing", price: "160 kr" },
+        { name: "Tryffelburgare", description: "Dubbel peppar jack ost, tryffelkräm, sallad, lök, tomat", price: "160 kr" },
+        { name: "Crispy Chicken", description: "Sallad, lök, tomat, dressing", price: "125 kr" },
+        { name: "Halloumiburgare", description: "Dubbel cheddarost, sallad, lök, tomat, dressing", price: "160 kr" },
       ]
     },
     {
-      title: "Högrevsburgare",
+      title: "Kebab & Sallad",
+      note: "Välj mellan nöt, fläsk och kyckling.",
       items: [
-        { name: "Super Cheese", description: "180g högrev, briochebröd, tomat, sallad, rödlök, dubbel cheddarost, pepper jack-ost och dressing. Pommes frites och en tryffelmayodipp ingår i alla mål.", price: "Från 149 kr" },
-        { name: "Cheese n Bacon", description: "180g högrev, briochebröd, tomat, sallad, rödlök, dubbel cheddarost, bacon och dressing. Pommes frites och en tryffelmayodipp ingår i alla mål.", price: "Från 149 kr" },
-        { name: "Tryffelburgare", description: "180g högrev, briochebröd, tomat, sallad, rödlök, dubbel pepper jack-ost och tryffelkräm. Pommes frites och en tryffelmayodipp ingår i alla mål.", price: "Från 149 kr" },
-        { name: "BBQ Classic", description: "180g högrev, briochebröd, tomat, sallad, rödlök, dubbel pepper jack-ost, bacon, bbq-sås och dressing. Pommes frites och en tryffelmayodipp ingår i alla mål.", price: "Från 149 kr" },
+        { name: "Kebabtallrik", description: "Kebabkött, pommes, sallad, fefferoni, lök, tomat, valfri sås", price: "155 kr" },
+        { name: "Kebabrulle", description: "Kebabkött, hembakt tunnbröd, sallad, fefferoni, lök, tomat, valfri sås", price: "155 kr" },
+        { name: "Kebab i pita", description: "Kebabkött, hembakt pitabröd, sallad, fefferoni, lök, tomat, valfri sås", price: "145 kr" },
+        { name: "Caesarsallad", description: "Kycklingfilé, romansallad, bacon, krutonger, grana padano", price: "155 kr" },
+        { name: "Kycklingsallad", description: "Kycklingfilé, sallad, tomat, gurka, lök", price: "155 kr" },
+        { name: "Kebabsallad", description: "Kebabkött, sallad, tomat, gurka, lök", price: "155 kr" },
+        { name: "Falafelsallad", description: "Kebabkött, sallad, tomat, gurka, lök", price: "155 kr" },
       ]
     },
     {
-      title: "Sallader",
+      title: "Fingerfood & Dipp",
+      tillagg: "Bearnaisesås, chillimajo, chipotlesås, vitlökssås och aioli 15 kr.",
       items: [
-        { name: "Kyckling & Fetaost Sallad", description: "", price: "Från 119 kr" },
-        { name: "Ost & Skink Sallad", description: "", price: "Från 119 kr" },
-        { name: "Kebabsallad", description: "", price: "Från 119 kr" },
-        { name: "Falafelsallad", description: "", price: "Från 119 kr" },
+        { name: "Lökringar", description: "5 st", price: "40 kr" },
+        { name: "Chilli Cheese", description: "5 st", price: "45 kr" },
+        { name: "Mozzarellastick", description: "3 st", price: "50 kr" },
+        { name: "Crispy Chicken", description: "Dipp", price: "60 kr" },
+        { name: "Alpinafries", description: "Pommes, cheddar, jalapeños, lök", price: "60 kr" },
       ]
     },
     {
-      title: "Tillbehör",
+      title: "Från Köket",
       items: [
-        { name: "Sås", description: "", price: "15 kr" },
-        { name: "Pizzasallad", description: "", price: "15 kr" },
-        { name: "Pommes på pizza", description: "", price: "25 kr" },
-        { name: "Pommes Tallrik", description: "En rejäl portion pommes frites.", price: "49 kr" },
-        { name: "Extra kött", description: "", price: "25 kr" },
-        { name: "Extra grönt", description: "", price: "15 kr" },
-        { name: "Cheese Fries", description: "Pommes frites, jalapeño, rödlök och cheddarostkräm.", price: "89 kr" },
+        { name: "Fish & Chips", description: "Panerad fisk, pommes, remouladsås", price: "170 kr" },
+        { name: "Nachotallrik", description: "Köttfärs, sallad, tomat, tacosås, crème fraiche", price: "150 kr" },
+        { name: "Schnitzel", description: "Pommes, bea, citron", price: "150 kr" },
+        { name: "Pasta Bolognese", description: "Köttfärssås, grana padano", price: "170 kr" },
+        { name: "Pasta Carbonara", description: "Bacon, lök, grädde, parmesan", price: "175 kr" },
+        { name: "Kyckling Pesto", description: "Kyckling, pesto, grädde, grana padano", price: "175 kr" },
+        { name: "Tryffelpasta", description: "Biff, tryffel, grädde, grana padano", price: "180 kr" },
+      ]
+    },
+    {
+      title: "Kids",
+      items: [
+        { name: "Barnburgare", description: "Pommes", price: "85 kr" },
+        { name: "Crispy Chicken", description: "Pommes", price: "85 kr" },
+        { name: "Pasta Bolognese", description: "Pasta, köttfärssås", price: "85 kr" },
+        { name: "Pannkakor", description: "Sylt, grädde", price: "85 kr" },
+        { name: "Kebabtallrik", description: "Välj mellan nöt, fläsk, kyckling, pommes, valfri sås", price: "85 kr" },
+        { name: "Valfri pizza", description: "Margarita, vesuvio, capricciosa, hawaii", price: "85 kr" },
+      ]
+    },
+    {
+      title: "Dessert",
+      items: [
+        { name: "Churros", description: "Noisette", price: "60 kr" },
+        { name: "Vaniljglas", description: "Chokladsås", price: "60 kr" },
+        { name: "Banana Split", description: "Glass, banan, kex, chokladsås", price: "70 kr" },
       ]
     },
     {
       title: "Dryck",
       items: [
-        { name: "Läsk 33cl", description: "Coca-Cola, Fanta, Sprite, Trocadero, MER, etc.", price: "20 kr" },
-        { name: "Läsk 50cl", description: "Coca-Cola, Fanta, Sprite, Trocadero, MER, etc.", price: "29 kr" },
-        { name: "Läsk 1.5l", description: "Coca-Cola, Fanta, Sprite, Trocadero, MER, etc.", price: "35 kr" },
+        { name: "Mineralvatten", description: "", price: "25 kr" },
+        { name: "Läsk", description: "", price: "25 kr" },
+        { name: "Mer", description: "", price: "15 kr" },
+        { name: "Kaffe", description: "", price: "25 kr" },
+        { name: "Espresso", description: "", price: "30 kr" },
+        { name: "Espresso dubbel", description: "", price: "40 kr" },
       ]
     },
     {
-      title: "18+",
+      title: "Öl & Cider",
       items: [
-        { name: "Eriksbergs 50cl", description: "", price: "84 kr" },
-        { name: "Poretti", description: "", price: "79 kr" },
-        { name: "Carlsberg HOF", description: "", price: "79 kr" },
-        { name: "Breezer", description: "", price: "79 kr" },
+        { name: "Pripps", description: "Fatöl, 40 cl", price: "70 kr" },
+        { name: "Eriksberg", description: "Fatöl, 40 cl", price: "75 kr" },
+        { name: "Mariestads", description: "Flaska, 50 cl", price: "85 kr" },
+        { name: "1664 Blanc", description: "Flaska, 33 cl", price: "70 kr" },
+        { name: "HOF (eco)", description: "Flaska, 33 cl", price: "70 kr" },
+        { name: "IPA", description: "Flaska, 33 cl", price: "100 kr" },
+        { name: "Somersby Päron", description: "Flaska, 33 cl", price: "75 kr" },
+      ]
+    },
+    {
+      title: "Vin",
+      items: [
+        { name: "Husets vitt/rött", description: "Glas", price: "80 kr" },
+        { name: "Husets rosé", description: "Glas", price: "80 kr" },
+        { name: "Husets cava", description: "Glas", price: "80 kr" },
+        { name: "Husets vitt/rött", description: "Flaska", price: "330 kr" },
+        { name: "Husets rosé", description: "Flaska", price: "330 kr" },
+        { name: "Husets cava", description: "Flaska", price: "330 kr" },
       ]
     }
   ];
@@ -688,7 +734,10 @@ function MenuPage() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-8">
+                      {category.note && (
+                        <p className="pt-6 text-gray-400 text-sm md:text-base">{category.note}</p>
+                      )}
+                      <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-4 ${category.note ? 'pt-6' : 'pt-8'}`}>
                         {category.items.map((item) => (
                           <div key={item.name} className="group bg-white/5 border border-white/10 rounded-xl p-4 md:p-6 hover:border-brand-teal/50 transition-all duration-300 flex flex-col relative">
                             <div className="flex-grow flex flex-col">
@@ -701,6 +750,11 @@ function MenuPage() {
                           </div>
                         ))}
                       </div>
+                      {category.tillagg && (
+                        <p className="mt-4 border border-white/10 rounded-xl p-4 md:p-5 text-gray-400 text-xs md:text-sm leading-relaxed">
+                          {category.tillagg}
+                        </p>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -709,8 +763,13 @@ function MenuPage() {
           })}
         </div>
 
-        <div className="mt-24 text-center">
-          <a 
+        {/* Står på kundens egen meny och hör hemma här av samma skäl. */}
+        <p className="mt-16 text-center text-gray-400 uppercase text-sm tracking-widest">
+          Allergier? Fråga personalen.
+        </p>
+
+        <div className="mt-12 text-center">
+          <a
             href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
