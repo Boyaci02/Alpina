@@ -7,3 +7,4 @@ coverage/
 .env*
 !.env.example
 meny-kassan.pdf
+_orig-bilder/

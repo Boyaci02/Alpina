@@ -90,8 +90,8 @@ function Navbar() {
           <Link to="/" className="flex items-center">
             <img 
               src={scrolled || isMenuOpen || location.pathname !== '/' 
-                ? "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69a365b2b617a76e561afb6f.png" 
-                : "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69a4b4c1b617a74f914a98aa.png"
+                ? "/img/69a365b2b617a76e561afb6f.webp" 
+                : "/img/69a4b4c1b617a74f914a98aa.webp"
               }
               alt="Alpina Urban Logo" 
               className="h-12 md:h-16 w-auto"
@@ -146,6 +146,7 @@ function Navbar() {
             </a>
             <button 
               className={`p-1 transition-colors ${scrolled || isMenuOpen || location.pathname !== '/' ? 'text-black' : 'text-white'}`}
+              aria-label={isMenuOpen ? "Stäng meny" : "Öppna meny"}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -220,7 +221,7 @@ function Footer() {
         <div className="col-span-2">
           <Link to="/" className="flex items-center mb-8">
             <img 
-              src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69a365b2b617a76e561afb6f.png" 
+              src="/img/69a365b2b617a76e561afb6f.webp" 
               alt="Alpina Urban Logo" 
               className="h-16 w-auto"
               referrerPolicy="no-referrer"
@@ -232,7 +233,7 @@ function Footer() {
         </div>
         
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal mb-6">Kontakt</h4>
+          <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal mb-6">Kontakt</h3>
           <ul className="space-y-4">
             <li>
               <a href={`mailto:${MEJL}`} className="text-gray-600 hover:text-black transition-colors flex items-center gap-2">
@@ -283,11 +284,11 @@ function HomePage() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             className="w-full h-full object-cover opacity-50"
-            poster="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e932c14c24cd5fa35ad1dd.jpeg"
+            poster="/img/68e932c14c24cd5fa35ad1dd.webp"
           >
-            <source src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e4018e4cd4d5265e52af96.mp4" type="video/mp4" />
+            <source src="/img/68e4018e4cd4d5265e52af96.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0a0a0a]"></div>
         </div>
@@ -397,8 +398,12 @@ function HomePage() {
           <div className="relative order-1 md:order-2">
             <div className="aspect-[4/5] md:aspect-auto overflow-hidden rounded-2xl">
               <img 
-                src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68ef4ae3fdc756d5056eee39.jpeg" 
+                src="/img/68ef4ae3fdc756d5056eee39.webp" 
                 alt="Alpina Urban Food" 
+                width={1200}
+                height={1800}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -466,7 +471,7 @@ function HomePage() {
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Söndag</span>
                   <span className="text-base md:text-lg font-black">12:00 – 21:00</span>
                 </div>
-                <p className="text-[10px] md:text-xs text-gray-500 italic mt-4">
+                <p className="text-[10px] md:text-xs text-gray-400 italic mt-4">
                   * Vi har öppet alla dagar i veckan för att servera dig Karlstads godaste mat.
                 </p>
               </div>
@@ -785,17 +790,17 @@ function MenuPage() {
 
 function GallerySection() {
   const galleryImages = [
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68f24300d8036b45a2bc23ce.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e932c115bf071c41a86693.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68ef459dfdc75676176e3bb3.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68f29e4c6752d4369227fdc8.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e932c15db7d672c3652612.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68ef4ae352bcc60d3b9c3c56.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68f242e922a3839f46bdb404.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e932c115bf076c8ea86694.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68ef459d52bcc627329b9f6d.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68f24300a1e01a8311f75b1b.jpeg",
-    "https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/68e932c2476e1f110b114564.jpeg"
+    "/img/68f24300d8036b45a2bc23ce.webp",
+    "/img/68e932c115bf071c41a86693.webp",
+    "/img/68ef459dfdc75676176e3bb3.webp",
+    "/img/68f29e4c6752d4369227fdc8.webp",
+    "/img/68e932c15db7d672c3652612.webp",
+    "/img/68ef4ae352bcc60d3b9c3c56.webp",
+    "/img/68f242e922a3839f46bdb404.webp",
+    "/img/68e932c115bf076c8ea86694.webp",
+    "/img/68ef459d52bcc627329b9f6d.webp",
+    "/img/68f24300a1e01a8311f75b1b.webp",
+    "/img/68e932c2476e1f110b114564.webp"
   ];
 
   // Duplicate the array for infinite scroll
@@ -815,6 +820,8 @@ function GallerySection() {
               <img 
                 src={src} 
                 alt={`Gallery ${i}`} 
+                  loading="lazy"
+                  decoding="async"
                 className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
