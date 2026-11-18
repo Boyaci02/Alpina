@@ -461,11 +461,11 @@ function HomePage() {
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Fredag</span>
-                  <span className="text-base md:text-lg font-black">11:00 – 23:00</span>
+                  <span className="text-base md:text-lg font-black">11:00 – 22:00</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Lördag</span>
-                  <span className="text-base md:text-lg font-black">12:00 – 23:00</span>
+                  <span className="text-base md:text-lg font-black">12:00 – 22:00</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-1">
                   <span className="text-gray-400 uppercase text-xs tracking-widest">Söndag</span>
